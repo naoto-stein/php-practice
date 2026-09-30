@@ -63,7 +63,6 @@ foreach ($capitalCities as $capitalCity) {
     echo $capitalCity ;
 }
 
-
 // Q8 連想配列-2
 if (isset($capitalCities["埼玉県"])) {
     echo "\n";
