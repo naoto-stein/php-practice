@@ -14,25 +14,18 @@ $z = $x * $y;
 var_dump($z/2);
 
 // Q3 日付操作
-function dateFormat($date) {
-    return date('Y年m月d日', strtotime($date));
-}
+date_default_timezone_set('Asia/Tokyo');
 
-echo "\n";
 echo "現在時刻は、" . date('Y年m月d日 H時i分s秒') . "です。";
 
 // Q4 条件分岐-1 if文
 $device = "mac";
 
 echo "\n";
-if ($device === "windows") {
-    echo "使用OSは、windowsです。";
+if ($device === "windows" || $device === "mac") {
+    echo "使用OSは、" . $device . "です。";
 } else {
-    if ($device === "mac") {
-        echo "使用OSは、macです。";
-    } else {
-        echo "どちらでもありません。";
-    }
+    echo "どちらでもありません。";
 }
 
 // Q5 条件分岐-2 三項演算子
@@ -42,7 +35,7 @@ echo "\n";
 echo $age < 18 ? "未成年です。" : "成人です。";
 
 // Q6 配列
-$kanto = ["東京都", "神奈川県", "栃木県", "千葉県"];
+$kanto = ["東京都", "神奈川県", "栃木県", "千葉県", "埼玉県", "群馬県", "茨城県"];
 
 echo "\n";
 echo $kanto[2] . "と" . $kanto[3] . "は関東地方の都道府県です。";
@@ -64,9 +57,9 @@ foreach ($capitalCities as $capitalCity) {
 }
 
 // Q8 連想配列-2
-if (isset($capitalCities["埼玉県"])) {
+if (isset($capitalCities[$kanto[4]])) {
     echo "\n";
-    echo "埼玉県の県庁所在地は、" . $capitalCities["埼玉県"] . "です。";
+    echo $kanto[4] . "の県庁所在地は、" . $capitalCities[$kanto[4]] . "です。";
 }
 
 // Q9 連想配列-3
@@ -85,12 +78,11 @@ foreach ($capitalCities as $prefecture => $capitalCity) {
 
 // Q10 関数-1
 function hello($name) {
-    echo "\n";
     return $name . "さん、こんにちは。";
 }
 
-echo hello("栗田") ;
-echo hello("永田") ;
+echo "\n" . hello("栗田") ;
+echo "\n" . hello("永田") ;
 
 // Q11 関数-2
 function calcTaxInPrice($price) {
